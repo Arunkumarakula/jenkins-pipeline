@@ -1,13 +1,20 @@
 pipeline {
     agent any
-    environment {
-        EXAMPLE_CREDS = credentials('example-credentials-id')
-    }
+
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
-                /* WRONG! */
-                sh("curl -u ${EXAMPLE_CREDS_USR}:${EXAMPLE_CREDS_PSW} https://example.com/")
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
